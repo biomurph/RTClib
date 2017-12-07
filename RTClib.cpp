@@ -504,3 +504,54 @@ void RTC_DS3231::writeSqwPinMode(Ds3231SqwPinMode mode) {
 
   //Serial.println( read_i2c_register(DS3231_ADDRESS, DS3231_CONTROL), HEX);
 }
+
+void RTC_DS3231::writeAlarm2_minute() {
+  uint8_t ctrl;
+  uint8_t setting;
+  setting = read_i2c_register(DS3231_ADDRESS, DS3231_A2M2);
+  setting |= 0x80;
+  write_i2c_register(DS3231_ADDRESS, DS3231_A2M2, setting);
+
+  setting = read_i2c_register(DS3231_ADDRESS, DS3231_A2M3);
+  setting |= 0x80;
+  write_i2c_register(DS3231_ADDRESS, DS3231_A2M3, setting);
+
+  setting = read_i2c_register(DS3231_ADDRESS, DS3231_A2M4);
+  setting |= 0x80;
+  write_i2c_register(DS3231_ADDRESS, DS3231_A2M4, setting);
+
+  // ctrl = read_i2c_register(DS3231_ADDRESS, DS3231_CONTROL);
+  // ctrl = bitSet(ctrl,1);
+  // ctrl |= 0x06; // turn on INTCON and Alarm2 interrupt
+  ctrl |= 0x9E; // turn on INTCON and Alarm2 interrupt
+  write_i2c_register(DS3231_ADDRESS, DS3231_CONTROL, ctrl);
+
+  // Serial.println( read_i2c_register(DS3231_ADDRESS, DS3231_CONTROL), HEX);
+}
+
+void RTC_DS3231::callBackToAlarm2() {
+
+  uint8_t statreg = read_i2c_register(DS3231_ADDRESS, DS3231_STATUSREG);
+
+  if(statreg && 0x02){
+    // statreg = bitClear(statreg,1);
+    statreg &= 0xFD; // clear Alarm 2 interrupt flag
+    write_i2c_register(DS3231_ADDRESS, DS3231_STATUSREG, statreg);
+  } else {
+    Serial.println("Interrupt Undefined: not Alarm 2!");
+  }
+}
+
+byte RTC_DS3231::readRTC_StatReg(){
+  uint8_t statreg = 0x00;
+  write_i2c_register(DS3231_ADDRESS, DS3231_STATUSREG, statreg);
+  statreg = read_i2c_register(DS3231_ADDRESS, DS3231_STATUSREG);
+  return statreg;
+}
+
+byte RTC_DS3231::readRTC_ControlReg(){
+  uint8_t controlreg = read_i2c_register(DS3231_ADDRESS, DS3231_CONTROL);
+  controlreg &= 0x77;
+  write_i2c_register(DS3231_ADDRESS, DS3231_CONTROL, controlreg);
+  return controlreg;
+}

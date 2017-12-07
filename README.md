@@ -1,3 +1,14 @@
+## This is a fork of Adafruit's fantastic real time clock library for Arduino.
+Modifications to DS3231 tools by BIOMURPH:
+
+* Added ability for Alarm2 to set INT every minute (seconds = 00)
+
+This code targets ChipKIT DP32 with no mofifications.
+
+Original ReadMe follows.
+
+****************
+
 This is a fork of JeeLab's fantastic real time clock library for Arduino.
 
 For details on using this library with an RTC module like the DS1307, PCF8523, or DS3231, see the guide at: https://learn.adafruit.com/ds1307-real-time-clock-breakout-board-kit/overview
