@@ -1,9 +1,9 @@
 ## This is a fork of Adafruit's fantastic real time clock library for Arduino.
-Modifications to DS3231 tools by BIOMURPH:
+Modifications to DS3231 tools by Joel Murphy:
 
 * Added ability for Alarm2 to set INT every minute (seconds = 00)
 
-This code targets ChipKIT DP32 with no mofifications.
+This code successfully targets ChipKIT DP32 with no modifications.
 
 Original ReadMe follows.
 
@@ -15,7 +15,7 @@ For details on using this library with an RTC module like the DS1307, PCF8523, o
 
 To download. click the DOWNLOADS button to the right, and rename the uncompressed folder RTClib.
 
-Place the RTClib folder in your *arduinosketchfolder*/libraries/ folder. 
+Place the RTClib folder in your *arduinosketchfolder*/libraries/ folder.
 You may need to create the libraries subfolder if its your first library. Restart the IDE.
 
 Please note that dayOfTheWeek() ranges from 0 to 6 inclusive with 0 being 'Sunday'
@@ -26,18 +26,19 @@ Please note that dayOfTheWeek() ranges from 0 to 6 inclusive with 0 being 'Sunda
 
 MCU                | Tested Works | Doesn't Work | Not Tested  | Notes
 ------------------ | :----------: | :----------: | :---------: | -----
-Atmega328 @ 16MHz  |      X       |             |            | 
-Atmega328 @ 12MHz  |      X       |             |            | 
+Atmega328 @ 16MHz  |      X       |             |            |
+Atmega328 @ 12MHz  |      X       |             |            |
 Atmega32u4 @ 16MHz |      X       |             |            | Use SDA/SCL on pins D3 &amp; D2
 Atmega32u4 @ 8MHz  |      X       |             |            | Use SDA/SCL on pins D3 &amp; D2
 ESP8266            |      X       |             |            | SDA/SCL default to pins 4 &amp; 5 but any two pins can be assigned as SDA/SCL using Wire.begin(SDA,SCL)
 Atmega2560 @ 16MHz |      X       |             |            | Use SDA/SCL on Pins 20 &amp; 21
 ATSAM3X8E          |      X       |             |            | Use SDA1 and SCL1
-ATSAM21D           |      X       |             |            | 
-ATtiny85 @ 16MHz   |      X       |             |            | 
-ATtiny85 @ 8MHz    |      X       |             |            | 
-Intel Curie @ 32MHz |             |             |     X       | 
-STM32F2            |             |             |     X       | 
+ATSAM21D           |      X       |             |            |
+ATtiny85 @ 16MHz   |      X       |             |            |
+ATtiny85 @ 8MHz    |      X       |             |            |
+Intel Curie @ 32MHz |             |             |     X       |
+STM32F2            |             |             |     X       |
+ChipKIT DP32			 |			X				|							|							|
 
   * ATmega328 @ 16MHz : Arduino UNO, Adafruit Pro Trinket 5V, Adafruit Metro 328, Adafruit Metro Mini
   * ATmega328 @ 12MHz : Adafruit Pro Trinket 3V

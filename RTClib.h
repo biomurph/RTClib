@@ -47,7 +47,7 @@ public:
     uint8_t dayOfTheWeek() const;
 
     // 32-bit times as seconds since 1/1/2000
-    long secondstime() const;   
+    long secondstime() const;
     // 32-bit times as seconds since 1/1/1970
     uint32_t unixtime(void) const;
 
@@ -107,7 +107,7 @@ public:
     static Ds3231SqwPinMode readSqwPinMode();
     static void writeSqwPinMode(Ds3231SqwPinMode mode);
     void writeAlarm2_minute();
-    void callBackToAlarm2();
+    void Alarm2callBack();
     byte readRTC_StatReg();
     byte readRTC_ControlReg();
 };
